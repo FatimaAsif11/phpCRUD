@@ -30,6 +30,20 @@ body{
         border-top: 1px solid black;;
         border-bottom: 1px solid black;
     }
+}
+.goback{
+    width: 250px;
+    align-content: center;
+    position: relative;
+    margin: auto;
+    padding: 5px 10px;
+    background-color: crimson;
+}
+.addNew{
+    
+    width: 70px;
+    align-content: center;
+    background-color: darkgray;
 
 }
 

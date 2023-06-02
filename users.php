@@ -1,6 +1,6 @@
 <?php
 include 'config/db.php';
-$username = "";
+$uname = "";
 if (!empty($_GET['username'])) {
     $uname = $_GET['username'];
 }
@@ -30,7 +30,14 @@ $result = $conn->query($sql);
                 <a href="http://localhost/phpCRUD/">Log Out</a>
             </div>
         </div>
+        
         <div class="content">
+            <div>
+            <div class="addNew">
+                <a href="">Add New</a>
+            </div>
+            <br/>
+            </div>
             <?php
             if ($result->num_rows > 0) {
                 // output data of each row

@@ -81,6 +81,9 @@ if (!empty($_GET['id'])) {
             <div class="field_group">
                 <input type="submit" name="" value="Update" />
             </div>
+            <div class="goback">
+                <a href="users.php">GO BACK TO USERS</a>
+            </div>
         </div>
     </form>
 
