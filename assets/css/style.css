@@ -1,0 +1,23 @@
+body{
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu{
+    height: 60px;
+    background: olivedrab;
+    .user{
+        width: 200px;
+        float: right;
+        color: black;
+        margin-top: 10px;
+    }
+    .logout{
+        float: right;
+        color: black;
+        margin-top: 35px;
+    }
+}
+
+
