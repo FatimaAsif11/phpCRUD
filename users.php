@@ -1,8 +1,12 @@
 <?php
+include 'config/db.php';
 $username = "";
 if (!empty($_GET['username'])) {
-    $username = $_GET['username'];
+    $uname = $_GET['username'];
 }
+
+$sql = "SELECT * FROM student";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +24,37 @@ if (!empty($_GET['username'])) {
         <div class="menu">
             <div class="user">
                 <?php
-                echo  $username ?>
+                echo  $uname ?>
             </div>
             <div class="logout">
-                <a href="http://localhost/php_crud/">Log Out</a>
+                <a href="http://localhost/phpCRUD/">Log Out</a>
             </div>
+        </div>
+        <div class="content">
+            <?php
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+
+            ?>
+                    <table>
+                        <tr>
+                            <td class="row"><?php echo $row["roll_num"] ?></td>
+                            <td class="row"><?php echo $row["firstname"] ?></td>
+                            <td class="row"><?php echo $row["lastname"] ?></td>
+                            <td class="row"><?php echo $row["gender"] ?></td>
+                            <td class="row"><a href="http://localhost/phpCRUD/edit.php?id=<?php echo $row["id"] ?>">EDIT</a> </td>
+                            <td class="row"><a href=""> Delete</a></td>
+
+                        </tr>
+                    </table>
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
         </div>
     </div>
 </body>
