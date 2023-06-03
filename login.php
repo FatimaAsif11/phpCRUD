@@ -7,7 +7,7 @@ if (isset($_GET['username'])) {
 
     if ($username == 'admin' && $password == 'abcd') {
         echo "Values Matched";
-        header('Location: http://localhost/phpCRUD/users.php?username='.$username);
+        header('Location: http://localhost/phpCRUD/students.php?username='.$username);
         exit;
     } else {
         echo "Values Mismatched: USER name or Password is wrong";

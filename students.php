@@ -34,7 +34,7 @@ $result = $conn->query($sql);
         <div class="content">
             <div>
             <div class="addNew">
-                <a href="">Add New</a>
+                <a href="edit.php?add=0">Add New</a>
             </div>
             <br/>
             </div>

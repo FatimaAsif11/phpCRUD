@@ -6,17 +6,31 @@ $row = array(
     'roll_num' => '',
     'gender' => '',
 );
+$firstname = "";
+$lastname = "";
+$rollnum = "";
+$gender = "";
+if (!empty($_GET['rollnum'])) {
+    $firstname = $_GET['firstname'];
+    $lastname = $_GET['lastname'];
+    $rollnum = $_GET['rollnum'];
+    $gender = $_GET['gender'];
+}
+
 $editid = "";
-if(!empty($_GET['rollnum']))
-{
-   
-    $sql = "update student SET firstname='".$_GET['firstname']. "', lastname='". $_GET['lastname']. "', roll_num='".$_GET['rollnum']. "', gender='".$_GET['gender']."'  WHERE id=" . $_GET['id'].";" ;
+if (!empty($_GET['add']) && ($_GET['add'] == 1)) {
+     $sql = "insert into student (firstname, lastname,roll_num,gender) values ('".$firstname."' , '".$lastname."' , '".$rollnum."'  , '".$gender."' )";
+     
     $result = $conn->query($sql);
-    if($result)
-    {
+    if ($result) {
+         echo "Added Succesfully";
+     }
+}else if(!empty($_GET['edit'])) {
+    $sql = "update student SET firstname='" . $firstname . "', lastname='" . $lastname . "', roll_num='" . $rollnum . "', gender='" . $gender . "'  WHERE id=" . $_GET['id'] . ";";
+    $result = $conn->query($sql);
+    if ($result) {
         echo "Updated Succesfully";
     }
-    
 }
 if (!empty($_GET['id'])) {
     $editid = $_GET['id'];
@@ -75,14 +89,27 @@ if (!empty($_GET['id'])) {
                 <label>Gender</label>
                 <input type="text" value="<?php echo $row['gender'] ?>" name="gender" />
             </div>
-            <div class="field_group">
-                <input type="hidden" value="<?php echo $row['id'] ?>" name="id" />
-            </div>
-            <div class="field_group">
-                <input type="submit" name="" value="Update" />
-            </div>
+            <?php
+            if (!empty($_GET['id'])) {
+            ?>
+                <div class="field_group">
+                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id" />
+                </div>
+                <div class="field_group">
+                    <input type="submit" name="" value="Update" />
+                </div>
+            <?php
+            } else{
+                ?>
+                <div class="field_group">
+                    <br/>
+                <input type="hidden" name="add" value="1" />
+                    <input type="submit" name="" value="ADD Student" />
+                </div>
+            <?php
+            }?>
             <div class="goback">
-                <a href="users.php">GO BACK TO USERS</a>
+                <a href="students.php">GO BACK TO Students</a>
             </div>
         </div>
     </form>
